@@ -720,14 +720,14 @@ class UEAloader(Dataset):
         return df, labels_df
 
     def instance_norm(self, case):
-        if self.root_path.count('EthanolConcentration') > 0:  # special process for numerical stability
-            mean = case.mean(0, keepdim=True)
-            case = case - mean
-            stdev = torch.sqrt(torch.var(case, dim=1, keepdim=True, unbiased=False) + 1e-5)
-            case /= stdev
-            return case
-        else:
-            return case
+        #if self.root_path.count('EthanolConcentration') > 0:  # special process for numerical stability
+        #    mean = case.mean(0, keepdim=True)
+        #    case = case - mean
+        #    stdev = torch.sqrt(torch.var(case, dim=1, keepdim=True, unbiased=False) + 1e-5)
+        #    case /= stdev
+        #    return case
+        #else: 
+        return case
 
     def __getitem__(self, ind):
         batch_x = self.feature_df.loc[self.all_IDs[ind]].values
